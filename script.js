@@ -1,21 +1,26 @@
 // Generate Button
 var generateBtn = document.querySelector("#generate");
 
-// declare variables for password context
+// declare variables for password characters
 var numbers = [0,1,2,3,4,5];
 var lowerCase = ["a","b","c"];
 var upperCase = ["A","B","C"]
 var specialCharacter = ["!","?","(","&"];
 
 
-// function when generate is clicked (?)
+// function for creating the password
 function generatePassword () {
   
+  // password variable with empty string that is filled later in this function
   var password = "";
   console.log("create a password");
+
+  // prompt to choose a password length held inside a var
   var passwordLength = prompt("Enter a password length between 8 and 128");
   
+  // start of if else statements
 
+  // if password length is between 8 and 128.. continue on
   if (passwordLength >= 8 && passwordLength <=128 ) {
     var isNumbers = confirm("Click OK to include Numbers in your password");
     var isLowerCase = confirm("Click OK to include lowercase letters in your password");
@@ -67,6 +72,7 @@ function generatePassword () {
 
         }
 
+    // if password length entered in prompt by user is not within 8 and 128, throw alert prompt of invalid entry and return to start
     } else {
         alert("Invalid Entry -- Pick a number between 8 and 128");
         return;
