@@ -8,77 +8,143 @@ var upperCase = ["A","B","C"]
 var specialCharacter = ["!","?","(","&"];
 
 
+
+
 // function for creating the password
 function generatePassword () {
-  
-  // password variable with empty string that is filled later in this function
-  var password = "";
-  console.log("create a password");
+      
+      // password variable with empty string that is filled later in this function
+      var password = "";
+      console.log("create a password");
 
-  // prompt to choose a password length held inside a var
-  var passwordLength = prompt("Enter a password length between 8 and 128");
-  
-  // start of if else statements
+      // prompt to choose a password length held inside a var
+      var passwordLength = prompt("Enter a password length between 8 and 128");
+      
+      // start of if else statements
 
-  // if password length is between 8 and 128.. continue on
-  if (passwordLength >= 8 && passwordLength <=128 ) {
-    var isNumbers = confirm("Click OK to include Numbers in your password");
-    var isLowerCase = confirm("Click OK to include lowercase letters in your password");
-    var isUpperCase = confirm("Click OK to include UPPERCASE letters in your password");
-    var isSpecialCharacter = confirm("Click OK to include special characters letters in your password");
-        
-    // Numbers Only
-        if (isNumbers && !isLowerCase && !isUpperCase) {
+      // if password length is between 8 and 128.. continue on
+      if (passwordLength >= 8 && passwordLength <=128 ) {
+        var isNumbers = confirm("Click OK to include Numbers in your password");
+        var isLowerCase = confirm("Click OK to include lowercase letters in your password");
+        var isUpperCase = confirm("Click OK to include UPPERCASE letters in your password");
+        var isSpecialCharacter = confirm("Click OK to include special characters letters in your password");
+            
+        // Numbers Only
+            if (isNumbers && !isLowerCase && !isUpperCase && !isSpecialCharacter) {
 
-          for (var i = 0; i <= passwordLength; i++) {
-            var randomNumber = Math.floor(Math.random() * numbers.length);
-            password += (randomNumber);
-          }
-          console.log(password);
+              for (var i = 0; i <= passwordLength; i++) {
+                var randomNumber = Math.floor(Math.random() * numbers.length);
+                password += (randomNumber);
+              }
+              console.log(password);
 
-        // LowerCase Only
-        } else if (!isNumbers && isLowerCase && !isUpperCase) {
-            for (var i = 0; i <= passwordLength; i++) {
-              var randomLowerCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-              password += (randomLowerCase);
-            }
-            console.log(password);
-         
-        // UpperCase Only
-        } else if (!isNumbers && !isLowerCase && isUpperCase) {
-            for (var i = 0; i <= passwordLength; i++) {
-              var randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)];
-              password += (randomUpperCase);
-            }
-            console.log(password);   
+            // LowerCase Only
+            } else if (!isNumbers && isLowerCase && !isUpperCase && !isSpecialCharacter) {
+                for (var i = 0; i <= passwordLength; i++) {
+                  var randomLowerCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+                  password += (randomLowerCase);
+                }
+                console.log(password);
+            
+            // UpperCase Only
+            } else if (!isNumbers && !isLowerCase && isUpperCase && !isSpecialCharacter) {
+                for (var i = 0; i <= passwordLength; i++) {
+                  var randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)];
+                  password += (randomUpperCase);
+                }
+                console.log(password);   
 
-        // Special Character Only
-        } else if (!isNumbers && !isLowerCase && !isUpperCase && isSpecialCharacter) {
-            for (var i = 0; i <= passwordLength; i++) {
+            // Special Character Only
+            } else if (!isNumbers && !isLowerCase && !isUpperCase && isSpecialCharacter) {
+                for (var i = 0; i <= passwordLength; i++) {
+                  var randomSpecialCharacter = specialCharacter[Math.floor(Math.random() * specialCharacter.length)];
+                  password += (randomSpecialCharacter);
+                }
+                console.log(password);
+
+              // Numbers & LowerCase Only
+            } else if (isNumbers && isLowerCase) {
+              for (var i = 0; i <= passwordLength/2; i++) {
+                var randomNumber = Math.floor(Math.random() * numbers.length);
+                var randomLowerCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+                password += (randomNumber);
+                password += (randomLowerCase);
+              }
+              console.log(password);
+
+              // Numbers & upperCase Only
+            } else if (isNumbers && isUpperCase) {
+              for (var i = 0; i <= passwordLength/2; i++) {
+                var randomNumber = Math.floor(Math.random() * numbers.length);
+                var randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)];
+                password += (randomNumber);
+                password += (randomUpperCase);
+              }
+              console.log(password);
+
+            // Numbers & specialCharacters Only
+            } else if (isNumbers && isSpecialCharacter) {
+            for (var i = 0; i <= passwordLength/2; i++) {
+              var randomNumber = Math.floor(Math.random() * numbers.length);
               var randomSpecialCharacter = specialCharacter[Math.floor(Math.random() * specialCharacter.length)];
+              password += (randomNumber);
               password += (randomSpecialCharacter);
             }
             console.log(password);
+            
 
-          // Numbers & LowerCase Only
-        } else if (isNumbers && isLowerCase) {
-          for (var i = 0; i <= passwordLength/2; i++) {
-            var randomNumber = Math.floor(Math.random() * numbers.length);
-            var randomLowerCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-            password += (randomNumber);
-            password += (randomLowerCase);
-          }
-          console.log(password);
+            // lowerCase & upperCase Only
+            } else if (isLowerCase && isUpperCase) {
+              for (var i = 0; i <= passwordLength/2; i++) {
+                var randomLowerCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+                var randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)];
+                password += (randomLowerCase);
+                password += (randomUpperCase);
+              }
+              console.log(password);
 
-        }
+            // lowerCase & upperCase Only
+            } else if (isLowerCase && isSpecialCharacter) {
+              for (var i = 0; i <= passwordLength/2; i++) {
+                var randomLowerCase = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+                var randomSpecialCharacter = specialCharacter[Math.floor(Math.random() * specialCharacter.length)];
+                password += (randomLowerCase);
+                password += (randomSpecialCharacter);
+              }
+              console.log(password);
+              
 
-    // if password length entered in prompt by user is not within 8 and 128, throw alert prompt of invalid entry and return to start
-    } else {
-        alert("Invalid Entry -- Pick a number between 8 and 128");
-        return;
-    } 
+            // upperCase & specialCharacter Only
+            } else if (isUpperCase && isSpecialCharacter) {
+              for (var i = 0; i <= passwordLength/2; i++) {
+                var randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)];
+                var randomSpecialCharacter = specialCharacter[Math.floor(Math.random() * specialCharacter.length)];
+                password += (randomUpperCase);
+                password += (randomSpecialCharacter);
+              }
+              console.log(password);
+            }
 
-  return password;
+          // // numbers & upperCase & specialCharacter Only
+          // } else if (isNumbers && isUpperCase && isSpecialCharacter) {
+          //   for (var i = 0; i <= passwordLength; i++) {
+          //     var randomNumber = Math.floor(Math.random() * numbers.length);
+          //     var randomUpperCase = upperCase[Math.floor(Math.random() * upperCase.length)];
+          //     var randomSpecialCharacter = specialCharacter[Math.floor(Math.random() * specialCharacter.length)];
+          //     password += (randomNumber);
+          //     password += (randomUpperCase);
+          //     password += (randomSpecialCharacter);
+          //   }
+          //   console.log(password);
+          // }
+
+        // if password length entered in prompt by user is not within 8 and 128, throw alert prompt of invalid entry and return to start
+        } else {
+            alert("Invalid Entry -- Pick a number between 8 and 128");
+            return;
+        } 
+
+      return password;
 }
 
 
