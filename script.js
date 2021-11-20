@@ -2,10 +2,9 @@
 var generateBtn = document.querySelector("#generate");
 
 // declare variables for password characters
-// var characters = {
-  var numbers = ["0","1","2","3","4","5"];
-  var lowerCase = ["a","b","c"];
-  var upperCase = ["A","B","C"];
+  var numbers = ['0','1','2','3','4','5','6','7','8','9'];
+  var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  var upperCase = toUpperCase(lowerCase);
   var specialCharacter = ["!","?","(","&"];
 
 
@@ -14,69 +13,65 @@ var generateBtn = document.querySelector("#generate");
 // function for creating the password
 function generatePassword () {
       
-      // password variable with empty string that is filled later in this function
-      var finalPassword = "";
-      var passwordString = [];
+      // empty password  variable that is filled later in this function
+      var password = [];
+      // empty passwordArray variable that the characters will be concated into
+      var passwordArray = [];
       console.log("create a password");
 
       // prompt to choose a password length held inside a var
-      var passwordLength = parseInt(prompt("Enter a password length between 8 and 128"));
+      var passwordLength = prompt("Enter a password length between 8 and 128");
       
-      // start of if else statements
+      
 
-      // if password length is between 8 and 128.. continue on
-      if (passwordLength <= 8 && passwordLength >= 128 ) {
-        
-
+      // if password length is less than 8 and greater than 128.. invalid error alert
+      if (passwordLength < 8 && passwordLength > 128 ) {
+        alert("Invalid Entry -- Pick a number between 8 and 128");
+            return;
       } 
+
+      // variables whose value is a confirm popup to allow the user to input preferance of character type the password generator should utilize
       var isNumbers = confirm("Click OK to include Numbers in your password");
       var isLowerCase = confirm("Click OK to include lowercase letters in your password");
       var isUpperCase = confirm("Click OK to include UPPERCASE letters in your password");
       var isSpecialCharacter = confirm("Click OK to include special characters letters in your password");
       
-        // Numbers Only
+      // If the user selects OK for isNumbers confirm
       if (isNumbers === true) {
-              passwordString = passwordString.concat(numbers);
+          passwordArray = passwordArray.concat(numbers);
+          console.log(passwordArray);   
 
-              console.log(passwordString);   
+      // If the user selects OK for isNumbers confirm
+      } if (isLowerCase === true) {
+          passwordArray = passwordArray.concat(lowerCase);
+          console.log(passwordArray); 
 
-            // LowerCase Only
-         } if (isLowerCase === true) {
-              passwordString = passwordString.concat(lowerCase);
+      // UpperCase Only
+        } if (isUpperCase === true) {
+            passwordArray = passwordArray.concat(upperCase);
+            console.log(passwordArray);   
 
-              console.log(passwordString); 
+      // Special Character Only
+        } if (isSpecialCharacter === true) {
+            passwordArray = passwordArray.concat(specialCharacter);
+            console.log(passwordArray);   
 
-            // UpperCase Only
-            } if (isUpperCase === true) {
-              passwordString = passwordString.concat(upperCase);
-            
-                console.log(passwordString);   
+      // For Loop to randomize the password characters based on the user input for password length
+        } if (passwordArray.length > 0) {
+            for (var i = 0; i < passwordLength; i++) {
+                var randomizedPassword = passwordArray[Math.floor(Math.random() * passwordArray.length)];
+                password += (randomizedPassword); }
 
-            // Special Character Only
-            } if (isSpecialCharacter === true) {
-              passwordString = passwordString.concat(specialCharacter);
-                console.log(passwordString);   
-
-              } if (passwordString.length > 0) {
-                for (var i = 0; i < passwordLength; i++) {
-                   var passwordIndex = [Math.floor(Math.random() * passwordString.length)];
-                    finalPassword += (passwordIndex);
-
-                    console.log(passwordString);
-                  }
-
-        // if password length entered in prompt by user is not within 8 and 128, throw alert prompt of invalid entry and return to start
-        } else {
-            alert("Invalid Entry -- Pick a number between 8 and 128");
-            return;
-        } 
-
-      return finalPassword;
+            console.log(randomizedPassword);
+            console.log(password);
+            return password;
+        }
 }
 
 
 // Write password to the #password input
 function writePassword() {
+  // redeclare password var in the global scope
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
