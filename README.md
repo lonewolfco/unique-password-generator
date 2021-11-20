@@ -1,6 +1,6 @@
-# 03 JavaScript: Password Generator
+# Unique Password Generator
 
-## Project
+## Overview
 
 Create an application that enables employees to generate random passwords based on criteria that they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code. It will have a clean and polished, responsive user interface that adapts to multiple screen sizes.
 
@@ -38,7 +38,7 @@ THEN the password is either displayed in an alert or written to the page
 
 The following image shows the web application's appearance and functionality:
 
-![The Password Generator application displays a red button to "Generate Password".](./Assets/03-javascript-homework-demo.png)
+![The Password Generator application displays a red button to "Generate Password".](assets/images/mockup.png)
 
 ## Grading Requirements
 

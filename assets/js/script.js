@@ -24,11 +24,20 @@ function generatePassword () {
       
       
 
-      // if password length is less than 8 and greater than 128.. invalid error alert
-      if (passwordLength < 8 && passwordLength > 128 ) {
-        alert("Invalid Entry -- Pick a number between 8 and 128");
+      // if user input does not meet requirements for a number between 8 & 128 or inputs a value that is not a number.. alert windows will appear
+      if (passwordLength < 8 ) {
+        alert("🚫 Invalid Password Length 🚫 \n👉 Password cannot be less than 8 characters\n👉 Pick a number between 8 and 128");
             return;
-      } 
+      }  else if (passwordLength > 128 ) {
+        alert("🚫 Invalid Password Length 🚫 \n👉 Password cannot be greater than 128 characters\n👉 Pick a number between 8 and 128");
+            return;
+      } else if (isNaN(passwordLength)) {
+        alert("🚫 Invalid Entry 🚫 \n👉 Pick a number between 8 and 128");
+            return;
+    // if user inputs a value between 8 and 128, overcommunicate value entered
+    } else if (passwordLength >= 8 && passwordLength <=128 ) {
+        alert("✅ The generator will create a unique password that is " + passwordLength + " characters long\n👉 Choose character types next...")
+      }
 
       // variables whose value is a confirm popup to allow the user to input preferance of character type the password generator should utilize
       var isNumbers = confirm("Click OK to include Numbers in your password");
@@ -54,8 +63,12 @@ function generatePassword () {
       // Special Character Only
         } if (isSpecialCharacter) {
             passwordArray = passwordArray.concat(specialCharacter);
-            console.log(passwordArray);   
+            console.log(passwordArray);  
 
+        } if (!isNumbers && !isLowerCase && !isUpperCase && !isSpecialCharacter) {
+            alert("💀 No Character Types Selected 💀 \n 👉 Please Try again");
+            return;
+        
       // For Loop to randomize the password characters based on the user input for password length
         } if (passwordArray.length > 0) {
             for (var i = 0; i < passwordLength; i++) {
