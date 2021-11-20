@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 // declare variables for password characters
   var numbers = ['0','1','2','3','4','5','6','7','8','9'];
   var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-  var upperCase = toUpperCase(lowerCase);
+  var upperCase = lowerCase.map(lowerCase => lowerCase.toUpperCase());
   var specialCharacter = ["!","?","(","&"];
 
 
@@ -37,22 +37,22 @@ function generatePassword () {
       var isSpecialCharacter = confirm("Click OK to include special characters letters in your password");
       
       // If the user selects OK for isNumbers confirm
-      if (isNumbers === true) {
+      if (isNumbers) {
           passwordArray = passwordArray.concat(numbers);
           console.log(passwordArray);   
 
       // If the user selects OK for isNumbers confirm
-      } if (isLowerCase === true) {
+      } if (isLowerCase) {
           passwordArray = passwordArray.concat(lowerCase);
           console.log(passwordArray); 
 
       // UpperCase Only
-        } if (isUpperCase === true) {
+        } if (isUpperCase) {
             passwordArray = passwordArray.concat(upperCase);
             console.log(passwordArray);   
 
       // Special Character Only
-        } if (isSpecialCharacter === true) {
+        } if (isSpecialCharacter) {
             passwordArray = passwordArray.concat(specialCharacter);
             console.log(passwordArray);   
 
