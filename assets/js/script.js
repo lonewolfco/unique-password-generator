@@ -5,7 +5,7 @@ var generateBtn = document.querySelector("#generate");
   var numbers = ['0','1','2','3','4','5','6','7','8','9'];
   var lowerCase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
   var upperCase = lowerCase.map(lowerCase => lowerCase.toUpperCase());
-  var specialCharacter = ["!","?","(","&"];
+  var specialCharacter = ["!","?","(","&", "#", "$", "*", "-", "/", ":","=","@"];
 
 
 
@@ -47,23 +47,19 @@ function generatePassword () {
       
       // If the user selects OK for isNumbers confirm
       if (isNumbers) {
-          passwordArray = passwordArray.concat(numbers);
-          console.log(passwordArray);   
+          passwordArray = passwordArray.concat(numbers);  
 
       // If the user selects OK for isNumbers confirm
       } if (isLowerCase) {
           passwordArray = passwordArray.concat(lowerCase);
-          console.log(passwordArray); 
 
       // UpperCase Only
         } if (isUpperCase) {
             passwordArray = passwordArray.concat(upperCase);
-            console.log(passwordArray);   
 
       // Special Character Only
         } if (isSpecialCharacter) {
             passwordArray = passwordArray.concat(specialCharacter);
-            console.log(passwordArray);  
 
         } if (!isNumbers && !isLowerCase && !isUpperCase && !isSpecialCharacter) {
             alert("💀 No Character Types Selected 💀 \n 👉 Please Try again");
@@ -75,7 +71,6 @@ function generatePassword () {
                 var randomizedPassword = passwordArray[Math.floor(Math.random() * passwordArray.length)];
                 password += (randomizedPassword); }
 
-            console.log(randomizedPassword);
             console.log(password);
             return password;
         }
