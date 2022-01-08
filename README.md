@@ -1,4 +1,8 @@
 # Unique Password Generator
+[![License: MIT](https://img.shields.io/badge/License-MIT-red.svg)](https://opensource.org/licenses/MIT)
+
+https://lonewolfco.github.io/unique-password-generator
+
 
 ## Overview
 
